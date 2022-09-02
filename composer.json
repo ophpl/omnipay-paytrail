@@ -1,0 +1,61 @@
+{
+  "name": "ophpl/omnipay-paytrail",
+  "type": "library",
+  "description": "Paytrail gateway for Omnipay payment processing library",
+  "keywords": [
+    "paytrail",
+    "gateway",
+    "merchant",
+    "omnipay",
+    "pay",
+    "payment",
+    "purchase"
+  ],
+  "homepage": "https://github.com/ophpl/omnipay-paytrail",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Stanislav Prokopov",
+      "email": "stanislav.prokopov@gmail.com"
+    }
+  ],
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true,
+    "platform": {
+      "php": "8.0.2"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Omnipay\\Paytrail\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Omnipay\\Paytrail\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "omnipay/common": "^3.2",
+    "paytrail/paytrail-php-sdk": "^2.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.5|^9",
+    "omnipay/tests": "^4",
+    "guzzlehttp/guzzle": "^7.5.0",
+    "php-http/guzzle7-adapter": "^1",
+    "friendsofphp/php-cs-fixer": "^v3.0"
+  },
+  "scripts": {
+    "test": [
+      "@php -d date.timezone=UTC vendor/bin/phpunit -c phpunit.xml.dist"
+    ],
+    "lint": [
+      "vendor/bin/php-cs-fixer fix src --ansi --no-interaction --dry-run --diff --verbose"
+    ],
+    "fix": [
+      "vendor/bin/php-cs-fixer fix src"
+    ]
+  }
+}

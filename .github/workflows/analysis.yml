@@ -1,0 +1,32 @@
+name: Static Code Analysis
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  phpcs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      - name: Install dependencies
+        uses: php-actions/composer@v6
+
+      - name: Run PHPStan
+        uses: php-actions/phpstan@v3
+        with:
+          path: src/
+
+      - name: Run Psalm
+        uses: docker://vimeo/psalm-github-actions
+
+      - name: Run Phan
+        uses: k1LoW/phan-action@v0
+
